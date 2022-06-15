@@ -8,13 +8,41 @@
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Microsoft.EntityFrameworkCore.InMemory" />
     <None Remove="Microsoft.Extensions.Options.ConfigurationExtensions" />
+    <None Remove="Interfaces\" />
+    <None Remove="Interfaces\Repositories\" />
+    <None Remove="Helpers\" />
+    <None Remove="Microsoft.AspNetCore.Http" />
+    <None Remove="Microsoft.AspNetCore.Http.Abstractions" />
+    <None Remove="Microsoft.AspNetCore.Http.Extensions" />
+    <None Remove="Newtonsoft.Json" />
+    <None Remove="Interfaces\Services\" />
+    <None Remove="ViewModels\" />
+    <None Remove="ViewModels\User\" />
+    <None Remove="ViewModels\Categories\" />
+    <None Remove="ViewModels\Advertisements\" />
+    <None Remove="Services\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.17" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.17" />
     <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Extensions" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EMarket.Core.Domain\EMarket.Core.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Interfaces\" />
+    <Folder Include="Interfaces\Repositories\" />
+    <Folder Include="Helpers\" />
+    <Folder Include="Interfaces\Services\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="ViewModels\User\" />
+    <Folder Include="ViewModels\Categories\" />
+    <Folder Include="ViewModels\Advertisements\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 </Project>
