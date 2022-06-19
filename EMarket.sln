@@ -17,7 +17,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMarket.Core.Application", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMarket.Infrastructure.Persistence", "Infrastructure\EMarket.Infrastructure.Persistence\EMarket.Infrastructure.Persistence.csproj", "{57C225AA-3231-4EA9-8EB4-D9808FC0EA25}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApp.EMarket", "WebApp\EMarket\WebApp.EMarket.csproj", "{99FAD758-224B-482A-BF8E-B8F230969012}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMarket.WebApp", "WebApp\EMarket\EMarket.WebApp.csproj", "{99FAD758-224B-482A-BF8E-B8F230969012}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

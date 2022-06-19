@@ -21,7 +21,7 @@ namespace EMarket.Infrastructure.Persistence
             {
                 services.AddDbContext<ApplicationContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
-                m => m.MigrationsAssembly("WebApp.EMarket")));
+                m => m.MigrationsAssembly("EMarket.WebApp")));
             }
             #endregion
 

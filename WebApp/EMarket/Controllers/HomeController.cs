@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-namespace EMarket.Controllers
+namespace EMarket.WebApp.Controllers
 {
     public class HomeController : Controller
     {

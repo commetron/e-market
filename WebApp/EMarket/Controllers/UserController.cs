@@ -5,7 +5,7 @@ using EMarket.Core.Application.Helpers;
 using EMarket.Core.Application.Interfaces.Services;
 using WebApp.EMarket.Middlewares;
 
-namespace WebApp.EMarket.Controllers
+namespace EMarket.WebApp.Controllers
 {
     public class UserController : Controller
     {
