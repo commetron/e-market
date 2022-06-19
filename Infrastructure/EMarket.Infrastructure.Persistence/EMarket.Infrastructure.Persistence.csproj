@@ -8,6 +8,8 @@
     <None Remove="Microsoft.EntityFrameworkCore.InMemory" />
     <None Remove="Microsoft.EntityFrameworkCore.SqlServer" />
     <None Remove="Microsoft.Extensions.Options.ConfigurationExtensions" />
+    <None Remove="GenericRepository\" />
+    <None Remove="Contects\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="5.0.17" />
@@ -17,5 +19,9 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\EMarket.Core.Application\EMarket.Core.Application.csproj" />
     <ProjectReference Include="..\..\Core\EMarket.Core.Domain\EMarket.Core.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Repositories\" />
+    <Folder Include="Contexts\" />
   </ItemGroup>
 </Project>
