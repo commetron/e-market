@@ -21,6 +21,7 @@ namespace WebApp.EMarket.Middlewares
             {
                 return false;
             }
+
             return true;
         }
 
