@@ -26,10 +26,10 @@
     <Folder Include="Views\User\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Core\EMarket.Core.Application\EMarket.Core.Application.csproj">
+    <ProjectReference Include="..\..\Core\EMarket.Core.Application\EMarket.Core.Application.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
-    <ProjectReference Include="..\Infrastructure\EMarket.Infrastructure.Persistence\EMarket.Infrastructure.Persistence.csproj">
+    <ProjectReference Include="..\..\Infrastructure\EMarket.Infrastructure.Persistence\EMarket.Infrastructure.Persistence.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
