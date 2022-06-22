@@ -1,21 +1,43 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+using EMarket.Core.Application.Interfaces.Services;
+using EMarket.Core.Application.ViewModels.Advertisements;
+using System.Threading.Tasks;
+using WebApp.EMarket.Middlewares;
 
 namespace EMarket.WebApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly IAdvertisementService _advertisementService;
+        private readonly ICategoryService _categoryService;
+        private readonly ValidateUserSession _validateUserSession;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(IAdvertisementService advertisementService, ICategoryService categoryService, ValidateUserSession validateUserSession)
         {
-            _logger = logger;
+            _advertisementService = advertisementService;
+            _categoryService = categoryService;
+            _validateUserSession = validateUserSession;
         }
 
-        public IActionResult Index()
+        [HttpGet]
+        public async Task<IActionResult> Index()
         {
-            return View();
+            if (!_validateUserSession.HasUser())
+            {
+                return RedirectToRoute(new { controller = "User", action = "Index" });
+            }
+
+            ViewBag.Categories = await _categoryService.GetAllViewModel();
+
+            return View(await _advertisementService.GetAllViewModel());
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Filter(FilterAdvertisementViewModel filters)
+        {
+            ViewBag.Categories = await _categoryService.GetAllViewModel();
+
+            return View("Index", await _advertisementService.GetAllViewModelWithFilters(filters));
         }
     }
 }
-

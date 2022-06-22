@@ -1,0 +1,61 @@
+﻿@using EMarket.Core.Application.ViewModels.Advertisements;
+@model List<AdvertisementViewModel>
+@{
+    ViewData["Title"] = "Advertisements";
+}
+
+<div class="row justify-content-center">
+    <div class="col-11">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary bg-opacity-75">
+                <h3 class="text-white">
+                    Advertisements Maintenance
+                    <a class="btn btn-success shadow-sm" asp-controller="Advertisement" asp-action="Create">Create</a>
+                </h3>
+            </div>
+            @if (Model.Count == 0 || Model == null)
+            {
+                <div class="container-fluid text-center m-5">
+                    <h4>No Advertisements created...</h4>
+                    <h5>Start creating one!</h5>
+                </div>
+            }
+            else
+            {
+                <div class="card-body">
+                    <div class="row">
+
+                        @foreach (AdvertisementViewModel item in Model)
+                        {
+                            <div class="col-3 mb-3">
+                                <div class="card shadow-sm">
+                                    <img src="@item.ImageUrl" class="img-thumbnail card-img-top" />
+
+                                    <div class="card-body">
+                                        <h4>@item.Name</h4>
+                                        <div>
+                                            <div>
+                                                <label class="card-subtitle text-muted">Price:</label>
+                                                <span class="badge text-bg-primary">@item.Price</span>
+                                            </div>
+                                            <div>
+                                                <label class="card-subtitle text-muted">Category:</label>
+                                                <span class="badge text-bg-info">@item.CategoryName</span>
+                                            </div>
+                                            <div class="mt-3 d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <a asp-controller="Advertisement" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">Edit</a>
+                                                    <a asp-controller="Advertisement" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

@@ -21,10 +21,14 @@
     <None Remove="Microsoft.VisualStudio.Web.CodeGeneration.Design" />
     <None Remove="Middlewares\" />
     <None Remove="Views\User\" />
+    <None Remove="Views\Advertisement\" />
+    <None Remove="Views\Categories\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Middlewares\" />
     <Folder Include="Views\User\" />
+    <Folder Include="Views\Advertisement\" />
+    <Folder Include="Views\Category\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Core\EMarket.Core.Application\EMarket.Core.Application.csproj">

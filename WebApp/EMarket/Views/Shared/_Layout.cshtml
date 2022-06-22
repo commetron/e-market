@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http
+@using EMarket.Core.Application.Helpers;
+@using EMarket.Core.Application.ViewModels.User
+@inject IHttpContextAccessor httpContextAccessor
+@{var User = httpContextAccessor.HttpContext.Session.Get<UserViewModel>("user");}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -11,16 +17,25 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark border-bottom box-shadow mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">EMarket</a>
+                <a class="navbar-brand" asp-area="" asp-controller="@(User!= null ? "Home" : "User")" asp-action="Index">EMarket</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
-                        @*<li class="nav-item">
-                            <a class="nav-link text-white" asp-controller="Home" asp-action="Index">EMarket</a>
-                        </li>*@
+                        @if (User != null)
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link text-white fw-bold" asp-controller="Advertisement" asp-action="Index">My Advertisements</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-white fw-bold" asp-controller="Category" asp-action="Index">Categories</a>
+                            </li>
+                            <li class="nav-item align-content-end">
+                                <a class="nav-link text-white fw-bold" asp-controller="User" asp-action="LogOut">Logout</a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

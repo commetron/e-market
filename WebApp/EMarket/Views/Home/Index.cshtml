@@ -1,9 +1,89 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using EMarket.Core.Application.ViewModels.Advertisements;
+@using EMarket.Core.Application.ViewModels.Categories;
+@model List<AdvertisementViewModel>
+@{
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<div class="row justify-content-center">
+    <div class="col-2">
+        <div class="card shadow-sm">
+            <div class="card-header bg-secondary">
+                <h3 class="text-white">Filter by:</h3>
+            </div>
+            <div class="card-body">
+                <form method="post" asp-controller="Home" asp-action="Filter">
+                    <div class="form-group">
+                        <div><input class="form-control w-100" type="text" placeholder="Name..." name="Name" id="name" value=""></div>
+                    </div>
+                    <hr class="my-3">
 
+                    <div class="form-group">
+                        <label><strong>Category:</strong></label>
+                        <div class="form-check">
+                            <input class="form-check-input" value="null" type="radio" name="CategoryId" id="category-all" />
+                            <label class="form-check-label" for="category-all">All</label>
+                        </div>
+
+                        @foreach (CategoryViewModel category in ViewBag.Categories)
+                        {
+                            <div class="form-check">
+                                <input class="form-check-input" value="@category.Id" type="radio" name="CategoryId" id="category-@category.Id" />
+                                <label class="form-check-label" for="category-@category.Id">@category.Name</label>
+                            </div>
+                        }
+                    </div>
+                    <hr class="my-3">
+
+                    <div class="text-center px-xl-3">
+                        <button class="btn btn-success shadow-sm btn-block" type="submit">Filter</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-9">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary bg-opacity-75">
+                <h3 class="text-white">Advertisements</h3>
+            </div>
+            @if (Model.Count == 0 || Model == null)
+            {
+                <div class="container-fluid text-center m-5">
+                    <h4>No Advertisements created...</h4>
+                </div>
+            }
+            else
+            {
+                <div class="card-body">
+                    <div class="row">
+
+                        @foreach (AdvertisementViewModel item in Model)
+                        {
+                            <div class="col-3 mb-3">
+                                <div class="card shadow-sm">
+                                    <img src="@item.ImageUrl" class="img-thumbnail card-img-top" />
+
+                                    <div class="card-body">
+                                        <h4>@item.Name</h4>
+                                        <div>
+                                            <div>
+                                                <label class="card-subtitle text-muted">Price:</label>
+                                                <span class="badge text-bg-primary">@item.Price</span>
+                                            </div>
+                                            <div>
+                                                <label class="card-subtitle text-muted">Category:</label>
+                                                <span class="badge text-bg-info">@item.CategoryName</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

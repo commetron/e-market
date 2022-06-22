@@ -1,0 +1,53 @@
+﻿@using EMarket.Core.Application.ViewModels.Categories;
+@model List<CategoryViewModel>
+@{
+    ViewData["Title"] = "Categories";
+}
+
+<div class="row justify-content-center">
+    <div class="col-11">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary bg-opacity-75">
+                <h3 class="text-white">
+                    Categories Maintenance
+                    <a class="btn btn-success shadow-sm" asp-controller="Category" asp-action="Create">Create</a>
+                </h3>
+            </div>
+            @if (Model.Count == 0 || Model == null)
+            {
+                <div class="container-fluid text-center m-5">
+                    <h4>No Categories created...</h4>
+                    <h5>Start creating one!</h5>
+                </div>
+            }
+            else
+            {
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (CategoryViewModel item in Model)
+                        {
+                            <div class="col-4 mb-3">
+                                <div class="card shadow-sm">
+                                    <div class="card-body">
+                                        <h4 class="card-title">@item.Name</h4>
+                                        <p class="card-text">@item.Description</p>
+                                        <div>
+                                            <label class="card-subtitle text-muted">Advertisements Quantity:</label>
+                                            <span class="text-bg-primary">@item.AdvertisementsQuantity</span>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center mt-3">
+                                            <div class="btn-group">
+                                                <a asp-controller="Category" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">Edit</a>
+                                                <a asp-controller="Category" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
