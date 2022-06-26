@@ -41,7 +41,7 @@ namespace EMarket.WebApp.Controllers
             SaveAdvertisementViewModel vm = new();
             vm.Categories = await _categoryService.GetAllViewModel();
 
-            return View("SaveAdvertisement", vm);
+            return View("Save", vm);
         }
 
         [HttpPost]
@@ -56,7 +56,7 @@ namespace EMarket.WebApp.Controllers
             {
                 vm.Categories = await _categoryService.GetAllViewModel();
 
-                return View("SaveAdvertisement", vm);
+                return View("Save", vm);
             }
 
             SaveAdvertisementViewModel advertisementVm = await _advertisementService.Add(vm);
@@ -99,7 +99,7 @@ namespace EMarket.WebApp.Controllers
             SaveAdvertisementViewModel vm = await _advertisementService.GetByIdSaveViewModel(id);
             vm.Categories = await _categoryService.GetAllViewModel();
 
-            return View("SaveAdvertisement", vm);
+            return View("Save", vm);
         }
 
         [HttpPost]
@@ -114,7 +114,7 @@ namespace EMarket.WebApp.Controllers
             {
                 vm.Categories = await _categoryService.GetAllViewModel();
 
-                return View("SaveAdvertisement", vm);
+                return View("Save", vm);
             }
 
             SaveAdvertisementViewModel advertisementVm = await _advertisementService.GetByIdSaveViewModel(vm.Id);

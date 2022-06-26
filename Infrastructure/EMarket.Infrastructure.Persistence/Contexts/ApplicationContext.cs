@@ -64,6 +64,7 @@ namespace EMarket.Infrastructure.Persistence.Contexts
             #endregion
 
             #region "Relationships"
+
             modelBuilder.Entity<Category>()
                 .HasMany(category => category.Advertisements)
                 .WithOne(product => product.Category)
@@ -75,6 +76,7 @@ namespace EMarket.Infrastructure.Persistence.Contexts
              .WithOne(product => product.User)
              .HasForeignKey(product => product.UserId)
              .OnDelete(DeleteBehavior.Cascade);
+
             #endregion
 
             #region "Property configurations"
@@ -89,6 +91,18 @@ namespace EMarket.Infrastructure.Persistence.Contexts
                Property(product => product.Price)
                .IsRequired();
 
+            modelBuilder.Entity<Advertisement>().
+               Property(product => product.Description)
+               .IsRequired();
+
+            modelBuilder.Entity<Advertisement>().
+               Property(product => product.ImageUrl1)
+               .IsRequired();
+
+            modelBuilder.Entity<Advertisement>().
+               Property(product => product.CategoryId)
+               .IsRequired();
+
             #endregion
 
             #region Categories
@@ -96,6 +110,10 @@ namespace EMarket.Infrastructure.Persistence.Contexts
               Property(category => category.Name)
               .IsRequired()
               .HasMaxLength(100);
+
+            modelBuilder.Entity<Category>().
+              Property(category => category.Description)
+              .IsRequired();
             #endregion
 
             #region Users

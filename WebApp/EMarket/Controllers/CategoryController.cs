@@ -34,7 +34,7 @@ namespace EMarket.WebApp.Controllers
                 return RedirectToRoute(new { controller = "User", action = "Index" });
             }
 
-            return View("SaveCategory", new SaveCategoryViewModel());
+            return View("Save", new SaveCategoryViewModel());
         }
 
         [HttpPost]
@@ -47,7 +47,7 @@ namespace EMarket.WebApp.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View("SaveCategory", vm);
+                return View("Save", vm);
             }
 
             await _categoryService.Add(vm);
@@ -61,7 +61,7 @@ namespace EMarket.WebApp.Controllers
                 return RedirectToRoute(new { controller = "User", action = "Index" });
             }
 
-            return View("SaveCategory", await _categoryService.GetByIdSaveViewModel(id));
+            return View("Save", await _categoryService.GetByIdSaveViewModel(id));
         }
 
         [HttpPost]
@@ -74,7 +74,7 @@ namespace EMarket.WebApp.Controllers
 
             if (!ModelState.IsValid)
             {
-                return View("SaveCategory", vm);
+                return View("Save", vm);
             }
 
             await _categoryService.Update(vm);
