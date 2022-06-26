@@ -146,9 +146,18 @@ namespace EMarket.Core.Application.Services
                 CategoryId = advertisement.Category.Id,
             }).ToList();
 
-            if (filters.CategoryId != null)
+            if (filters.Name != null)
             {
-                listViewModels = listViewModels.Where(advertisement => advertisement.CategoryId == filters.CategoryId.Value).ToList();
+                listViewModels = listViewModels
+                    .Where(advertisement => advertisement.Name.ToLower().Contains(filters.Name.ToLower()))
+                    .ToList();
+            }
+
+            if (filters.CategoriesIds.Count > 0)
+            {
+                listViewModels = listViewModels
+                    .Where(advertisement => filters.CategoriesIds.Contains(advertisement.CategoryId))
+                    .ToList();
             }
 
             return listViewModels;

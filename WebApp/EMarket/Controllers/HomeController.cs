@@ -3,6 +3,7 @@ using EMarket.Core.Application.Interfaces.Services;
 using EMarket.Core.Application.ViewModels.Advertisements;
 using System.Threading.Tasks;
 using WebApp.EMarket.Middlewares;
+using System.Collections.Generic;
 
 namespace EMarket.WebApp.Controllers
 {
@@ -35,6 +36,11 @@ namespace EMarket.WebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> Advertisement(int vmId)
         {
+            if (!_validateUserSession.HasUser())
+            {
+                return RedirectToRoute(new { controller = "User", action = "Index" });
+            }
+
             ViewBag.Categories = await _categoryService.GetAllViewModel();
 
             return View("Advertisement", await _advertisementService.GetByIdViewModel(vmId));
@@ -43,6 +49,11 @@ namespace EMarket.WebApp.Controllers
         [HttpPost]
         public async Task<IActionResult> Filter(FilterAdvertisementViewModel filters)
         {
+            if (!_validateUserSession.HasUser())
+            {
+                return RedirectToRoute(new { controller = "User", action = "Index" });
+            }
+
             ViewBag.Categories = await _categoryService.GetAllViewModel();
 
             return View("Index", await _advertisementService.GetAllViewModelWithFilters(filters));

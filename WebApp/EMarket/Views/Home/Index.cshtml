@@ -21,15 +21,15 @@
                     <div class="form-group">
                         <label><strong>Category:</strong></label>
                         <div class="form-check">
-                            <input class="form-check-input" value="null" type="radio" name="CategoryId" id="category-all" />
+                            <input class="form-check-input" value="null" type="checkbox" name="CategoriesIds" id="category-all" />
                             <label class="form-check-label" for="category-all">All</label>
                         </div>
 
                         @foreach (CategoryViewModel category in ViewBag.Categories)
                         {
                             <div class="form-check">
-                                <input class="form-check-input" value="@category.Id" type="radio" name="CategoryId" id="category-@category.Id" />
-                                <label class="form-check-label" for="category-@category.Id">@category.Name</label>
+                                <input class="form-check-input" type="checkbox" name="CategoriesIds" id="category-@category.Id" value="@category.Id" />
+                                <label class="form-check-label" for="category-@category.Id" >@category.Name</label>
                             </div>
                         }
                     </div>
@@ -61,11 +61,11 @@
 
                         @foreach (AdvertisementViewModel item in Model)
                         {
-                            <a class="navbar-brand" asp-controller="Home" asp-action="Advertisement" asp-route-vmId="@item.Id">
-                                <div class="col-3 mb-3">
-                                    <div class="card shadow-sm">
-                                        <img src="@item.ImageUrl1" class="img-thumbnail card-img-top" />
+                            <div class="col-3 mb-3">
+                                <a class="text-decoration-none" asp-controller="Home" asp-action="Advertisement" asp-route-vmId="@item.Id">
 
+                                    <div class="card shadow-sm h-100">
+                                        <img src="@item.ImageUrl1" class="img-thumbnail card-img-top" />
                                         <div class="card-body">
                                             <h4>@item.Name</h4>
                                             <div>
@@ -80,8 +80,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
+
+                                </a>
+                            </div>
                         }
                     </div>
                 </div>
