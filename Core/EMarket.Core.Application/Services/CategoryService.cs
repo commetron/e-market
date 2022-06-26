@@ -78,8 +78,11 @@ namespace EMarket.Core.Application.Services
                 Name = category.Name,
                 Description = category.Description,
                 Id = category.Id,
-                AdvertisementsQuantity = category.Advertisements.Where(advertisement => advertisement.UserId == userViewModel.Id).Count()
-            }).ToList();
+                AdvertisementsQuantity = category.Advertisements.Count,
+                UsersQuantity = category.Advertisements
+                .GroupBy(advertisement => advertisement.UserId)
+                .Select(y => y.First()).Count()
+        }).ToList();
         }
     }
 }

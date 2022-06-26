@@ -98,11 +98,27 @@ namespace EMarket.Core.Application.Services
             }).ToList();
         }
 
+        public async Task<List<AdvertisementViewModel>> GetAllViewModelHome()
+        {
+            List<Advertisement> advertisementList = await _advertisementRepository.GetAllWithInclude(new List<string> { "Category" });
+
+            return advertisementList.Where(advertisement => advertisement.UserId != userViewModel.Id).Select(advertisement => new AdvertisementViewModel
+            {
+                Name = advertisement.Name,
+                Description = advertisement.Description,
+                Id = advertisement.Id,
+                Price = advertisement.Price,
+                ImageUrl = advertisement.ImageUrl,
+                CategoryName = advertisement.Category.Name,
+                CategoryId = advertisement.Category.Id
+            }).ToList();
+        }
+
         public async Task<List<AdvertisementViewModel>> GetAllViewModelWithFilters(FilterAdvertisementViewModel filters)
         {
             List<Advertisement> advertisementList = await _advertisementRepository.GetAllWithInclude(new List<string> { "Category" });
 
-            List<AdvertisementViewModel> listViewModels = advertisementList.Where(advertisement => advertisement.UserId == userViewModel.Id).Select(advertisement => new AdvertisementViewModel
+            List<AdvertisementViewModel> listViewModels = advertisementList.Where(advertisement => advertisement.UserId != userViewModel.Id).Select(advertisement => new AdvertisementViewModel
             {
                 Name = advertisement.Name,
                 Description = advertisement.Description,

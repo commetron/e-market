@@ -29,7 +29,7 @@ namespace EMarket.WebApp.Controllers
 
             ViewBag.Categories = await _categoryService.GetAllViewModel();
 
-            return View(await _advertisementService.GetAllViewModel());
+            return View(await _advertisementService.GetAllViewModelHome());
         }
 
         [HttpPost]

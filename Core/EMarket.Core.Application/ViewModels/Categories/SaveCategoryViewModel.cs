@@ -6,9 +6,10 @@ namespace EMarket.Core.Application.ViewModels.Categories
 	{
 		public int Id { get; set; }
 
-		[Required(ErrorMessage = "Please enter a category name.")]
+		[Required(ErrorMessage = "Please enter a name.")]
 		public string Name { get; set; }
 
+		[Required(ErrorMessage = "Please enter a description.")]
 		public string Description { get; set; }
 	}
 }

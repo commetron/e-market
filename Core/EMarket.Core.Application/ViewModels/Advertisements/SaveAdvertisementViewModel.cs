@@ -10,11 +10,11 @@ namespace EMarket.Core.Application.ViewModels.Advertisements
 	{
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Please enter an advertisement name.")]
+        [Required(ErrorMessage = "Please enter a name.")]
         [DataType(DataType.Text)]
         public string Name { get; set; }
 
-        [Required(ErrorMessage = "Debe colocar el precio del producto")]
+        [Required(ErrorMessage = "Please enter a price.")]
         [DataType(DataType.Currency)]
         public double Price { get; set; }
 
@@ -24,7 +24,7 @@ namespace EMarket.Core.Application.ViewModels.Advertisements
         [DataType(DataType.Text)]
         public string ImageUrl { get; set; }
 
-        [Range(1, int.MaxValue, ErrorMessage = "Please enter an advertisement category.")]
+        [Range(1, int.MaxValue, ErrorMessage = "Please enter a category.")]
         public int CategoryId { get; set; }
 
         public List<CategoryViewModel> Categories { get; set; }
