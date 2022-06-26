@@ -1,0 +1,79 @@
+﻿@using EMarket.Core.Application.ViewModels.Advertisements;
+@model AdvertisementViewModel
+@{
+    ViewData["Title"] = "Advertisement";
+}
+
+<div class="row justify-content-center mb-4">
+    <div class="col-7">
+        <div class="card shadow-sm">
+            <div class="card-header bg-dark text-light">
+                <h4>Advertisement: @{@Model.Name}</h4>
+            </div>
+            <div class="card-body">
+                <input type="hidden" asp-for="Id" />
+
+                <div id="carouselExampleIndicators" class="carousel slide mb-3" data-bs-ride="true">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="bd-placeholder-img card-img-top img-product-size" width="800" height="400" src="@Model.ImageUrl1" />
+                            <div class="carousel-caption d-none d-md-block">
+                                <h5>Image 1</h5>
+                            </div>
+                        </div>
+                        @if (Model.ImageUrl2 != "")
+                        {
+                            <div class="carousel-item">
+                                <img class="bd-placeholder-img card-img-top img-product-size" width="800" height="400" src="@Model.ImageUrl2" />
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Image 2</h5>
+                                </div>
+                            </div>
+                        }
+                        @if (Model.ImageUrl3 != "")
+                        {
+                            <div class="carousel-item">
+                                <img class="bd-placeholder-img card-img-top img-product-size" width="800" height="400" src="@Model.ImageUrl3" />
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Image 3</h5>
+                                </div>
+                            </div>
+                        }
+                        @if (Model.ImageUrl4 != "")
+                        {
+                            <div class="carousel-item">
+                                <img class="bd-placeholder-img card-img-top img-product-size" width="800" height="400" src="@Model.ImageUrl4" />
+                                <div class="carousel-caption d-none d-md-block">
+                                    <h5>Image 4</h5>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+
+                <h5>Description</h5>
+                <p>@Model.Description</p>
+
+                <h5>Category</h5>
+                <p>@Model.Description</p>
+
+                <h5>Contact</h5>
+                <ul>
+                    <li><strong>Name:</strong> @Model.UserName</li>
+                    <li><strong>Email:</strong> @Model.UserMail</li>
+                    <li><strong>Phone:</strong> @Model.UserPhone</li>
+                </ul>
+
+                <p>Created on: @Model.Date</p>
+            </div>
+        </div>
+    </div>
+</div>

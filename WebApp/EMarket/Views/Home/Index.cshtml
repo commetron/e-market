@@ -61,25 +61,27 @@
 
                         @foreach (AdvertisementViewModel item in Model)
                         {
-                            <div class="col-3 mb-3">
-                                <div class="card shadow-sm">
-                                    <img src="@item.ImageUrl" class="img-thumbnail card-img-top" />
+                            <a class="navbar-brand" asp-controller="Home" asp-action="Advertisement" asp-route-vmId="@item.Id">
+                                <div class="col-3 mb-3">
+                                    <div class="card shadow-sm">
+                                        <img src="@item.ImageUrl1" class="img-thumbnail card-img-top" />
 
-                                    <div class="card-body">
-                                        <h4>@item.Name</h4>
-                                        <div>
+                                        <div class="card-body">
+                                            <h4>@item.Name</h4>
                                             <div>
-                                                <label class="card-subtitle text-muted">Price:</label>
-                                                <span class="badge text-bg-primary">@item.Price</span>
-                                            </div>
-                                            <div>
-                                                <label class="card-subtitle text-muted">Category:</label>
-                                                <span class="badge text-bg-info">@item.CategoryName</span>
+                                                <div>
+                                                    <label class="card-subtitle text-muted">Price:</label>
+                                                    <span class="badge text-bg-primary">@item.Price</span>
+                                                </div>
+                                                <div>
+                                                    <label class="card-subtitle text-muted">Category:</label>
+                                                    <span class="badge text-bg-info">@item.CategoryName</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         }
                     </div>
                 </div>

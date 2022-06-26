@@ -9,7 +9,10 @@ namespace EMarket.Core.Domain.Entities
         public double Price { get; set; }
         public string Description { get; set; }
         public DateTime Date { get; set; }
-        public string ImageUrl { get; set; }
+        public string ImageUrl1 { get; set; }
+        public string ImageUrl2 { get; set; }
+        public string ImageUrl3 { get; set; }
+        public string ImageUrl4 { get; set; }
         public string UserName { get; set; }
         public string UserMail { get; set; }
         public string UserPhone { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace WebApp.EMarket.Migrations
+namespace EMarket.WebApp.Migrations
 {
     public partial class Initial : Migration
     {
@@ -56,7 +56,10 @@ namespace WebApp.EMarket.Migrations
                     Price = table.Column<double>(type: "float", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageUrl1 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageUrl2 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageUrl3 = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ImageUrl4 = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserMail = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     UserPhone = table.Column<string>(type: "nvarchar(max)", nullable: true),

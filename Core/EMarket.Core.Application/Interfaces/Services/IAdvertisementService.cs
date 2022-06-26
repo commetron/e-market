@@ -8,5 +8,6 @@ namespace EMarket.Core.Application.Interfaces.Services
     {
         Task<List<AdvertisementViewModel>> GetAllViewModelHome();
         Task<List<AdvertisementViewModel>> GetAllViewModelWithFilters(FilterAdvertisementViewModel filters);
+        Task<AdvertisementViewModel> GetByIdViewModel(int id);
     }
 }

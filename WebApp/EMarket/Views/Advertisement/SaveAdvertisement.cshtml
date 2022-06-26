@@ -1,15 +1,15 @@
 ﻿@using EMarket.Core.Application.ViewModels.Advertisements;
 @model SaveAdvertisementViewModel
 @{
-    bool editMode = Model.Id == 0 ? true : false;
+    bool editMode = Model.Id == 0 ? false : true;
     ViewData["Title"] = "Save Advertisement";
 }
 
-<div class="row">
-    <div class="col-5 offset-3">
+<div class="row justify-content-center mb-4">
+    <div class="col-7">
         <div class="card shadow-sm">
             <div class="card-header bg-dark text-light">
-                <h4>@(editMode ? "Create a Advertisement" : $"Editing the Advertisement: {Model.Name}")</h4>
+                <h4>@(!editMode ? "Create a Advertisement" : $"Editing the Advertisement: {Model.Name}")</h4>
             </div>
             <div class="card-body">
                 @if (Model.Categories == null || Model.Categories.Count == 0)
@@ -22,136 +22,127 @@
                 }
                 else
                 {
-                    <form method="post" asp-controller="Advertisement" asp-action="@(editMode ? "Create" : "Edit")" enctype="multipart/form-data">
+                <form method="post" asp-controller="Advertisement" asp-action="@(!editMode ? "Create" : "Edit")" enctype="multipart/form-data">
 
-                        <input type="hidden" asp-for="Id" />
+                    <input type="hidden" asp-for="Id" />
 
-                        <div class="form-group row mb-3">
-                            <div class="col">
-                                <label asp-for="Name" class="form-label">Name: </label>
-                                <input type="text" asp-for="Name" placeholder="Enter a name..." class="form-control shadow-sm">
-                                <span asp-validation-for="Name" class="text-danger"></span>
-                            </div>
-                            <div class="col">
-                                <label asp-for="Price" class="form-label">Price:</label>
-                                <input type="number" step="any" asp-for="Price" class="form-control" />
-                                <span asp-validation-for="Price" class="text-danger"></span>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-3">
-                            <div class="col">
-                                <label asp-for="Description" class="form-label">Description:</label>
-                                <textarea asp-for="Description" class="form-control"></textarea>
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-3">
-                            <div class="col">
-                                <label asp-for="File" class="form-label">Select a file:</label>
-
-                                @if (editMode)
+                    @if (editMode)
+                    {
+                        <div id="carouselExampleIndicators" class="carousel slide mb-3" data-bs-ride="true">
+                            <div class="carousel-inner">
+                                <div class="carousel-item active">
+                                    <img class="bd-placeholder-img card-img-top img-product-size" width="800" height="400" src="@Model.ImageUrl1" />
+                                    <div class="carousel-caption d-none d-md-block">
+                                        <h5>Image 1</h5>
+                                    </div>
+                                </div>
+                                @if (Model.ImageUrl2 != "")
                                 {
-                                    <input required asp-for="File" class="form-control" />
+                                    <div class="carousel-item">
+                                        <img class="bd-placeholder-img card-img-top img-product-size" width="800" height="400" src="@Model.ImageUrl2" />
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Image 2</h5>
+                                        </div>
+                                    </div>
                                 }
-                                else
+                                @if (Model.ImageUrl3 != "")
                                 {
-                                    <input asp-for="File" class="form-control" />
+                                    <div class="carousel-item">
+                                        <img class="bd-placeholder-img card-img-top img-product-size" width="800" height="400" src="@Model.ImageUrl3" />
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Image 3</h5>
+                                        </div>
+                                    </div>
                                 }
-
-                                <span asp-validation-for="File" class="text-danger"></span>
+                                @if (Model.ImageUrl4 != "")
+                                {
+                                    <div class="carousel-item">
+                                        <img class="bd-placeholder-img card-img-top img-product-size" width="800" height="400" src="@Model.ImageUrl4" />
+                                        <div class="carousel-caption d-none d-md-block">
+                                            <h5>Image 4</h5>
+                                        </div>
+                                    </div>
+                                }
                             </div>
+                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Previous</span>
+                            </button>
+                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                <span class="visually-hidden">Next</span>
+                            </button>
                         </div>
+                    }
 
-                        <div class="form-group row mb-3">
-                            <div class="col">
-                                <label asp-for="CategoryId" class="form-label">Categories:</label>
-                                <select asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories,"Id","Name"))" class="form-select">
-                                    <option value="0">Select an option</option>
-                                </select>
-                                <span asp-validation-for="CategoryId" class="text-danger"></span>
-                            </div>
+                    <div class="form-group row mb-3">
+                        <div class="col">
+                            <label asp-for="Name" class="form-label">Name: </label>
+                            <input type="text" asp-for="Name" placeholder="Enter a name..." class="form-control shadow-sm">
+                            <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
+                        <div class="col">
+                            <label asp-for="Price" class="form-label">Price:</label>
+                            <input type="number" step="any" asp-for="Price" class="form-control" />
+                            <span asp-validation-for="Price" class="text-danger"></span>
+                        </div>
+                    </div>
 
-                        <div class="container-fluid text-center">
-                            <button type="submit" class="btn btn-success shadow-sm">Save</button>
-                            <a asp-controller="Advertisement" asp-action="Index" class="btn btn-secondary shadow-sm">Cancel</a>
+                    <div class="form-group row mb-3">
+                        <div class="col">
+                            <label asp-for="Description" class="form-label">Description:</label>
+                            <textarea asp-for="Description" class="form-control"></textarea>
+                            <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
-                    </form>
-                }
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <div class="col">
+                            <label asp-for="File1" class="form-label">Select image 1:</label>
+
+                            @if (!editMode)
+                            {
+                                <input required asp-for="File1" class="form-control" />
+                            }
+                            else
+                            {
+                                <input asp-for="File1" class="form-control" />
+                            }
+                        </div>
+                        <div class="col">
+                            <label asp-for="File2" class="form-label">Select image 2:</label>
+                            <input asp-for="File2" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <div class="col">
+                            <label asp-for="File3" class="form-label">Select image 3:</label>
+                            <input asp-for="File3" class="form-control" />
+                        </div>
+                        <div class="col">
+                            <label asp-for="File4" class="form-label">Select image 4:</label>
+                            <input asp-for="File4" class="form-control" />
+                        </div>
+                    </div>
+
+                    <div class="form-group row mb-3">
+                        <div class="col">
+                            <label asp-for="CategoryId" class="form-label">Categories:</label>
+                            <select asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories,"Id","Name"))" class="form-select">
+                                <option value="0">Select an option</option>
+                            </select>
+                            <span asp-validation-for="CategoryId" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="container-fluid text-center">
+                        <button type="submit" class="btn btn-success shadow-sm">Save</button>
+                        <a asp-controller="Advertisement" asp-action="Index" class="btn btn-secondary shadow-sm">Cancel</a>
+                    </div>
+                </form>
+                    }
             </div>
         </div>
     </div>
 </div>
-
-
-
-@*<div class="container-fluid">
-    <div class="row">
-        <div class="col-6 offset-3">
-            <div class="card">
-                <div class="card-header bg-dark text-light">
-                    <h4>@(editMode ? $"Editing the advertisement: {Model.Name}" : "Create a new advertisement")</h4>
-                </div>
-                <div class="card-body">
-
-                    @if (Model.Categories == null || Model.Categories.Count == 0)
-                    {
-                        <h4>No categories created.</h4>
-                        <a asp-controller="Advertisement" asp-action="Index" class="btn btn-warning">Back</a>
-                    }
-                    else
-                    {
-                        <form method="post" asp-controllerAdvertisement" asp-action="@(editMode ? "Edit" : "Create")" enctype="multipart/form-data">
-
-                            <div class="mb-3">
-                                <label asp-for="Name" class="form-label">Name:</label>
-                                <input type="text" asp-for="Name" class="form-control" />
-                                <span asp-validation-for="Name" class="text-danger"></span>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="Description" class="form-label">Description:</label>
-                                <textarea asp-for="Description" class="form-control"></textarea>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="Price" class="form-label">Price:</label>
-                                <input type="number" step="any" asp-for="Price" class="form-control" />
-                                <span asp-validation-for="Price" class="text-danger"></span>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="File" class="form-label">Select a file:</label>
-                                @if (editMode)
-                                {
-                                    <input asp-for="File" class="form-control" />
-                                }
-                                else
-                                {
-                                    <input required asp-for="File" class="form-control" />
-                                }
-
-                                <span asp-validation-for="File" class="text-danger"></span>
-                            </div>
-
-                            <div class="mb-3">
-                                <label asp-for="CategoryId" class="form-label">Categories: </label>
-                                <select asp-for="CategoryId" asp-items="@(new SelectList(Model.Categories,"Id","Name"))" class="form-select">
-                                    <option value="0">Select an option</option>
-                                </select>
-                                <span asp-validation-for="CategoryId" class="text-danger"></span>
-                            </div>
-
-                            <input type="hidden" asp-for="Id" />
-
-                            <button type="submit" class="btn btn-primary">Save</button>
-                            <a asp-controller="Advertisement" asp-action="Index" class="btn btn-warning">Back</a>
-
-                        </form>
-                    }
-                </div>
-            </div>
-        </div>
-    </div>
-</div>*@

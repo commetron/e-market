@@ -32,6 +32,14 @@ namespace EMarket.WebApp.Controllers
             return View(await _advertisementService.GetAllViewModelHome());
         }
 
+        [HttpGet]
+        public async Task<IActionResult> Advertisement(int vmId)
+        {
+            ViewBag.Categories = await _categoryService.GetAllViewModel();
+
+            return View("Advertisement", await _advertisementService.GetByIdViewModel(vmId));
+        }
+
         [HttpPost]
         public async Task<IActionResult> Filter(FilterAdvertisementViewModel filters)
         {

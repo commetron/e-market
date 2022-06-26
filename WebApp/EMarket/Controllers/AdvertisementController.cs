@@ -63,7 +63,25 @@ namespace EMarket.WebApp.Controllers
 
             if (advertisementVm.Id != 0 && advertisementVm != null)
             {
-                advertisementVm.ImageUrl = UploadFile(vm.File, advertisementVm.Id);
+                advertisementVm.ImageUrl1 = UploadFile(vm.File1, advertisementVm.Id);
+                advertisementVm.ImageUrl2 = "";
+                advertisementVm.ImageUrl3 = "";
+                advertisementVm.ImageUrl4 = "";
+
+                if (vm.File2 != null)
+                {
+                    advertisementVm.ImageUrl2 = UploadFile(vm.File2, advertisementVm.Id);
+                }
+
+                if (vm.File3 != null)
+                {
+                    advertisementVm.ImageUrl3 = UploadFile(vm.File3, advertisementVm.Id);
+                }
+
+                if (vm.File4 != null)
+                {
+                    advertisementVm.ImageUrl4 = UploadFile(vm.File4, advertisementVm.Id);
+                }
 
                 await _advertisementService.Update(advertisementVm);
             }
@@ -100,7 +118,11 @@ namespace EMarket.WebApp.Controllers
             }
 
             SaveAdvertisementViewModel advertisementVm = await _advertisementService.GetByIdSaveViewModel(vm.Id);
-            vm.ImageUrl = UploadFile(vm.File, vm.Id, true, advertisementVm.ImageUrl);
+            vm.ImageUrl1 = UploadFile(vm.File1, vm.Id, true, advertisementVm.ImageUrl1);
+            vm.ImageUrl2 = UploadFile(vm.File2, vm.Id, true, advertisementVm.ImageUrl2);
+            vm.ImageUrl3 = UploadFile(vm.File3, vm.Id, true, advertisementVm.ImageUrl3);
+            vm.ImageUrl4 = UploadFile(vm.File4, vm.Id, true, advertisementVm.ImageUrl4);
+
             await _advertisementService.Update(vm);
 
             return RedirectToRoute(new { controller = "Advertisement", action = "Index" });
