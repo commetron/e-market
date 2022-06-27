@@ -4,12 +4,12 @@
 [![License](https://img.shields.io/static/v1?label=License&message=MIT&color=blue)](LICENCE.md)
 
 <p align="center">
-  <img src="screenshots/1-login.png" height=250px width=450px style="border:1px solid black;" />
-  <img src="screenshots/2-home.png" height=250px  width=450px style="border:1px solid black;" />
-  <img src="screenshots/3-home-view.png" height=250px  width=450px style="border:1px solid black;" />
-  <img src="screenshots/4-my-ads.png" height=250px width=450px style="border:1px solid black;" />
-  <img src="screenshots/5-my-ads-edit.png" height=250px width=450px style="border:1px solid black;" />
-  <img src="screenshots/6-categories.png" height=250px width=450px style="border:1px solid black;" />
+  <img src="screenshots/1-login.png" height=250px width=420px style="border:1px solid black;" />
+  <img src="screenshots/2-home.png" height=250px  width=420px style="border:1px solid black;" />
+  <img src="screenshots/3-home-view.png" height=250px  width=420px style="border:1px solid black;" />
+  <img src="screenshots/4-my-ads.png" height=250px width=420px style="border:1px solid black;" />
+  <img src="screenshots/5-my-ads-edit.png" height=250px width=420px style="border:1px solid black;" />
+  <img src="screenshots/6-categories.png" height=250px width=420px style="border:1px solid black;" />
 </p>
 
 Web app made with ASP.NET, FluentAPI, ONION Architecture and SQL Server.
