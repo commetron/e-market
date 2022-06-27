@@ -1,8 +1,5 @@
 # E-Market
 
-[![.NET Core](https://img.shields.io/static/v1?label=.NET%20Core&message=5.0&color=purple)](https://dotnet.microsoft.com)
-[![License](https://img.shields.io/static/v1?label=License&message=MIT&color=blue)](LICENCE.md)
-
 <p align="center">
   <img src="screenshots/1-login.png" height=250px width=350px style="border:1px solid black;" />
   <img src="screenshots/2-home.png" height=250px  width=350px style="border:1px solid black;" />
@@ -83,11 +80,3 @@ dotnet ef --startup-project ./WebApp/EMarket/ database update
 ```
 
 4. Run the project.
-
-## License
-
-```xml
-MIT License
-
-Copyright (c) 2022 Anibal Ventura
-```
