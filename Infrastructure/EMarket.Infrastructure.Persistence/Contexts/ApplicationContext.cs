@@ -96,10 +96,6 @@ namespace EMarket.Infrastructure.Persistence.Contexts
                .IsRequired();
 
             modelBuilder.Entity<Advertisement>().
-               Property(product => product.ImageUrl1)
-               .IsRequired();
-
-            modelBuilder.Entity<Advertisement>().
                Property(product => product.CategoryId)
                .IsRequired();
 

@@ -5,7 +5,7 @@
 }
 
 <div class="row justify-content-center mb-4">
-    <div class="col-7">
+    <div class="col-5">
         <div class="card shadow-sm">
             <div class="card-header bg-dark text-light">
                 <h4>Advertisement: @{@Model.Name}</h4>
@@ -63,10 +63,10 @@
                 <p>@Model.Description</p>
 
                 <h5>Category</h5>
-                <p>@Model.Description</p>
+                <p>@Model.CategoryName</p>
 
                 <h5>Price</h5>
-                <p>$ @Model.Price</p>
+                <p>@Model.Price.ToString("$ ##,###.00")</p>
 
                 <h5>Contact</h5>
                 <ul>
